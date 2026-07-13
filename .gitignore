@@ -1,0 +1,26 @@
+
+# 가상환경
+.venv/
+
+# 환경변수와 비밀키
+.env
+
+# Python 생성 파일
+__pycache__/
+*.py[cod]
+
+# macOS
+.DS_Store
+
+# SQLite
+app.db
+*.db-journal
+
+# ChromaDB
+chroma_db/
+
+# 테스트 캐시
+.pytest_cache/
+
+# IDE
+.vscode/
