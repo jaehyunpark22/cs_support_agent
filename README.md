@@ -30,13 +30,13 @@ cs_support_agent/
 │   ├── user_repository.py
 │   ├── order_repository.py
 │   ├── refund_repository.py
-│   └── unresolved_ticket_repository.py
+│   └── support_ticket_repository.py
 │
 ├── services/
 │   ├── __init__.py
 │   ├── order_service.py
 │   ├── refund_service.py
-│   └── unresolved_ticket_service.py
+│   └── support_ticket_service.py
 │
 ├── graph/
 │   ├── __init__.py
@@ -76,7 +76,7 @@ cs_support_agent/
 │   ├── __init__.py
 │   ├── test_order_service.py
 │   ├── test_refund_service.py
-│   ├── test_ticket_service.py
+│   ├── test_support_ticket_service.py
 │   └── test_api.py
 │
 ├── .env
