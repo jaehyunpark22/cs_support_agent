@@ -1,21 +1,12 @@
 # database/seed.py
 
-
 from database.db import Base, SessionLocal, engine
-from database.models import (
-    User,
-    Product,
-    Order,
-    OrderItem,
-    RefundRequest,
-    SupportTicket,
-)
+from database.models import User, Product, Order, OrderItem, RefundRequest, SupportTicket
 
 
 def seed() -> None:
     # 1. 테이블 생성 (이미 있으면 건드리지 않음)
     Base.metadata.create_all(bind=engine)
-
     db = SessionLocal()
 
     try:
@@ -35,25 +26,159 @@ def seed() -> None:
         db.add_all(users)
         db.flush()  # id 값을 미리 확보하기 위해 flush
 
-        # 3. 상품 10개 (가격대 다양하게)
+        # 3. 상품 20개 (가격대 다양하게, keywords는 검색용 태그)
         products = [
-            Product(name="머그컵", price=8000, description="심플한 도자기 머그컵", is_active=True),
-            Product(name="텀블러 500ml", price=12000, description="보온보냉 텀블러", is_active=True),
-            Product(name="양말 5종 세트", price=9900, description="면 혼방 양말 세트", is_active=True),
-            Product(name="노트북 파우치", price=25000, description="13인치용 파우치", is_active=True),
-            Product(name="보조배터리 10000mAh", price=32000, description="고속충전 지원", is_active=True),
-            Product(name="LED 스탠드 조명", price=38000, description="밝기 조절 가능", is_active=True),
-            Product(name="후드집업", price=45000, description="기모 안감 후드집업", is_active=True),
-            Product(name="캠핑 의자", price=65000, description="접이식 캠핑 의자", is_active=True),
-            Product(name="무선이어폰", price=89000, description="노이즈캔슬링 지원", is_active=True),
-            Product(name="블루투스 스피커", price=120000, description="방수 기능 포함", is_active=True),
+            Product(
+                name="머그컵",
+                price=8000,
+                description="심플한 도자기 머그컵",
+                keywords="주방용품,머그컵,컵,도자기",
+                is_active=True,
+            ),
+            Product(
+                name="텀블러 500ml",
+                price=12000,
+                description="보온보냉 텀블러",
+                keywords="주방용품,텀블러,보온,보냉",
+                is_active=True,
+            ),
+            Product(
+                name="양말 5종 세트",
+                price=9900,
+                description="면 혼방 양말 세트",
+                keywords="의류,양말,패션잡화,세트",
+                is_active=True,
+            ),
+            Product(
+                name="노트북 파우치",
+                price=25000,
+                description="13인치용 파우치",
+                keywords="가방,파우치,노트북,IT액세서리",
+                is_active=True,
+            ),
+            Product(
+                name="보조배터리 10000mAh",
+                price=32000,
+                description="고속충전 지원",
+                keywords="전자기기,IT액세서리,보조배터리,고속충전,배터리",
+                is_active=True,
+            ),
+            Product(
+                name="LED 스탠드 조명",
+                price=38000,
+                description="밝기 조절 가능",
+                keywords="가전,조명,LED,스탠드,인테리어,밝기조절",
+                is_active=True,
+            ),
+            Product(
+                name="후드집업",
+                price=45000,
+                description="기모 안감 후드집업",
+                keywords="의류,후드,후드집업,집업,아우터,기모",
+                is_active=True,
+            ),
+            Product(
+                name="캠핑 의자",
+                price=65000,
+                description="접이식 캠핑 의자",
+                keywords="캠핑,아웃도어,의자,접이식",
+                is_active=True,
+            ),
+            Product(
+                name="무선이어폰",
+                price=89000,
+                description="노이즈캔슬링 지원",
+                keywords="전자기기,이어폰,무선이어폰,무선,노이즈캔슬링",
+                is_active=True,
+            ),
+            Product(
+                name="블루투스 스피커",
+                price=120000,
+                description="방수 기능 포함",
+                keywords="전자기기,스피커,블루투스스피커,블루투스,방수",
+                is_active=True,
+            ),
+
+            # 신발
+            Product(
+                name="나이키 러닝화",
+                price=89000,
+                description="가벼운 착화감의 파란색 러닝화",
+                keywords="신발,운동화,러닝화,나이키,파란색,블루,경량",
+                is_active=True,
+            ),
+            Product(
+                name="아디다스 스니커즈",
+                price=79000,
+                description="데일리로 신기 좋은 흰색 스니커즈",
+                keywords="신발,운동화,스니커즈,아디다스,흰색,화이트",
+                is_active=True,
+            ),
+            Product(
+                name="뉴발란스 슬립온",
+                price=69000,
+                description="신고 벗기 편한 회색 슬립온",
+                keywords="신발,운동화,슬립온,뉴발란스,회색,그레이,편안함",
+                is_active=True,
+            ),
+            Product(
+                name="반스 캔버스화",
+                price=59000,
+                description="캐주얼한 검정색 캔버스 스니커즈",
+                keywords="신발,운동화,캔버스화,스니커즈,반스,검정색,블랙",
+                is_active=True,
+            ),
+            Product(
+                name="레인부츠",
+                price=42000,
+                description="비 오는 날에도 발이 젖지 않는 노란색 부츠",
+                keywords="신발,부츠,장화,레인부츠,방수,노란색,옐로우",
+                is_active=True,
+            ),
+
+            # 의류
+            Product(
+                name="폴로 블루 반팔 티셔츠",
+                price=39000,
+                description="파란색 카라 넥 반팔 티셔츠",
+                keywords="의류,티셔츠,반팔,상의,폴로,파란색,블루",
+                is_active=True,
+            ),
+            Product(
+                name="무지 청바지",
+                price=49000,
+                description="스트레이트핏 파란색 데님 청바지",
+                keywords="의류,바지,청바지,데님,파란색,블루",
+                is_active=True,
+            ),
+            Product(
+                name="나이키 후드티",
+                price=59000,
+                description="기모 안감의 빨간색 오버핏 후드티",
+                keywords="의류,후드,후드티,상의,아우터,나이키,빨간색,레드,기모",
+                is_active=True,
+            ),
+            Product(
+                name="유니클로 니트",
+                price=45000,
+                description="부드러운 촉감의 베이지색 보온 니트",
+                keywords="의류,니트,상의,유니클로,베이지,아이보리,보온",
+                is_active=True,
+            ),
+            Product(
+                name="카고 팬츠",
+                price=52000,
+                description="아웃도어룩에 어울리는 카키색 카고 팬츠",
+                keywords="의류,바지,팬츠,카고팬츠,카키색,카키,아웃도어",
+                is_active=True,
+            ),
         ]
         db.add_all(products)
         db.flush()
 
         # 편하게 참조하기 위해 이름으로 딕셔너리 구성
         p = {product.name: product for product in products}
-        u = {f"고객{i+1}": users[i] for i in range(5)}
+        u = {f"고객{i + 1}": users[i] for i in range(5)}
 
         # 4. 주문 11개 + order_items
         # (user, order_number, status, items=[(product_name, qty)])
@@ -75,7 +200,6 @@ def seed() -> None:
 
         for user, order_number, status, items in order_specs:
             total_amount = sum(p[name].price * qty for name, qty in items)
-
             order = Order(
                 user_id=user.id,
                 order_number=order_number,
@@ -100,19 +224,15 @@ def seed() -> None:
 
         db.flush()
 
-        # 5. 환불 요청 
+        # 5. 환불 요청
         # - A1001: 이미 pending 존재 → 중복 환불 차단 테스트용
-        
-        db.add_all(
-            [
-                RefundRequest(
-                    user_id=u["고객1"].id,
-                    order_id=order_by_number["A1001"].id,
-                    reason="사이즈가 맞지 않아 환불 원합니다",
-                    status="pending",
-                ),
-                
-            ]
+        db.add(
+            RefundRequest(
+                user_id=u["고객1"].id,
+                order_id=order_by_number["A1001"].id,
+                reason="상품이 기대와 달라 환불 원합니다",
+                status="pending",
+            )
         )
 
         # 6. 지원 문의 4건 (reason 4종, status 3종 모두 포함)
@@ -160,10 +280,6 @@ if __name__ == "__main__":
     seed()
 
 
-
-
-
-
 # seed.py 역할
 # database/models.py에 정의된 테이블 구조를 바탕으로 app.db 파일과
 # 실제 테이블을 생성하고, 개발·테스트용 샘플 데이터를 채워 넣는다.
@@ -174,6 +290,8 @@ if __name__ == "__main__":
 # 샘플 데이터는 무작위가 아니라, 다음 업무 규칙이 전부 최소 한 번씩
 # 걸리도록 의도적으로 설계했다.
 
+# - 상품명·종류·브랜드·색상·특징을 keywords로 검색할 수 있는 상품 데이터
+# - 파란색 티셔츠, 나이키 신발, 반팔 의류 등 복합 검색이 가능한 상품
 # - 주문 상태 5종(preparing/shipped/delivered/cancelled/refunded) 전부 존재
 # - 환불 가능/불가 상태 케이스 모두 존재
 # - 이미 pending 환불요청이 있는 주문 (중복 환불 차단 테스트용)
