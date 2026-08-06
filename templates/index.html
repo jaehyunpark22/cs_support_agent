@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>쇼핑몰 고객센터</title>
+  <link rel="stylesheet" href="/static/css/style.css" />
+</head>
+<body>
+  <div class="desk">
+    <header class="desk__header">
+      <p class="eyebrow">무인 상담 데스크</p>
+      <h1>쇼핑몰 고객센터</h1>
+      <p class="desk__sub">번호표를 선택하고 상담을 시작하세요</p>
+    </header>
+
+    <section class="ticket-row" aria-label="고객 선택">
+      <a class="ticket" href="/chat?user=1">
+        <span class="ticket__no">01</span>
+        <span class="ticket__label">손님 1번</span>
+      </a>
+      <a class="ticket" href="/chat?user=2">
+        <span class="ticket__no">02</span>
+        <span class="ticket__label">손님 2번</span>
+      </a>
+      <a class="ticket" href="/chat?user=3">
+        <span class="ticket__no">03</span>
+        <span class="ticket__label">손님 3번</span>
+      </a>
+      <a class="ticket" href="/chat?user=4">
+        <span class="ticket__no">04</span>
+        <span class="ticket__label">손님 4번</span>
+      </a>
+      <a class="ticket" href="/chat?user=5">
+        <span class="ticket__no">05</span>
+        <span class="ticket__label">손님 5번</span>
+      </a>
+    </section>
+
+    <section class="staff-row" aria-label="관리자">
+      <a class="ticket ticket--staff" href="/admin">
+        <span class="ticket__no">STAFF</span>
+        <span class="ticket__label">관리자</span>
+      </a>
+    </section>
+  </div>
+</body>
+</html>

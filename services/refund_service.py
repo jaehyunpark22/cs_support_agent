@@ -64,6 +64,9 @@ class RefundService:
 
         전부 통과하면 저장하고 commit한다.
         """
+        if reason is None or not isinstance(reason, str):
+            raise RefundReasonRequiredError()
+
         normalized_reason = reason.strip()
         if not normalized_reason:
             raise RefundReasonRequiredError()

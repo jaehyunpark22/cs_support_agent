@@ -1,3 +1,5 @@
+# shipping_policy.txt
+
 쇼핑몰 배송 정책 안내
 
 1. 배송 기간

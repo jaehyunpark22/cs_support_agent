@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>쇼핑몰 고객센터 · 관리자</title>
+  <link rel="stylesheet" href="/static/css/admin.css" />
+</head>
+<body>
+  <div class="admin-page">
+    <header class="admin-bar">
+      <a href="/" class="admin-bar__back">‹ 데스크로</a>
+      <h1 class="admin-bar__title">관리자 대시보드</h1>
+    </header>
+
+    <nav class="admin-tabs" role="tablist" aria-label="관리자 메뉴">
+      <button class="admin-tab is-active" data-tab="tickets" role="tab" aria-selected="true">문의 관리</button>
+      <button class="admin-tab" data-tab="orders" role="tab" aria-selected="false">주문 조회</button>
+      <button class="admin-tab" data-tab="refunds" role="tab" aria-selected="false">환불 요청</button>
+    </nav>
+
+    <main class="admin-content">
+      <section class="admin-panel" id="panel-tickets" role="tabpanel">
+        <div class="panel-head">
+          <p class="panel-count" id="tickets-count">불러오는 중...</p>
+          <select class="admin-filter" id="tickets-filter">
+            <option value="">전체 상태</option>
+            <option value="open">접수</option>
+            <option value="in_progress">처리중</option>
+            <option value="resolved">완료</option>
+          </select>
+        </div>
+        <div class="table-wrap">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>고객</th>
+                <th>문의 내용</th>
+                <th>사유</th>
+                <th>상태</th>
+                <th>접수일시</th>
+              </tr>
+            </thead>
+            <tbody id="tickets-tbody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="admin-panel" id="panel-orders" role="tabpanel" hidden>
+        <div class="panel-head">
+          <p class="panel-count" id="orders-count">불러오는 중...</p>
+        </div>
+        <div class="table-wrap">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>주문번호</th>
+                <th>고객</th>
+                <th>상품</th>
+                <th>상태</th>
+                <th>금액</th>
+                <th>주문일시</th>
+              </tr>
+            </thead>
+            <tbody id="orders-tbody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="admin-panel" id="panel-refunds" role="tabpanel" hidden>
+        <div class="panel-head">
+          <p class="panel-count" id="refunds-count">불러오는 중...</p>
+        </div>
+        <div class="table-wrap">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>주문번호</th>
+                <th>고객</th>
+                <th>사유</th>
+                <th>상태</th>
+                <th>요청일시</th>
+              </tr>
+            </thead>
+            <tbody id="refunds-tbody"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="/static/js/admin.js"></script>
+</body>
+</html>

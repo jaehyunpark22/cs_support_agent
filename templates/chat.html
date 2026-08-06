@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>쇼핑몰 고객센터 · 상담</title>
+  <link rel="stylesheet" href="/static/css/style.css" />
+</head>
+<body>
+  <div class="chat-page">
+    <header class="chat-bar">
+      <a href="/" class="chat-bar__back">‹ 데스크로</a>
+      <span class="chat-bar__tag" id="customer-tag">손님 -번</span>
+    </header>
+
+    <main class="chat-log" id="chat-log" aria-live="polite"></main>
+
+    <form class="chat-input" id="chat-form">
+      <textarea
+        id="chat-input"
+        placeholder="메시지를 입력하세요 (Shift+Enter로 줄바꿈)"
+        rows="1"
+        autocomplete="off"
+      ></textarea>
+      <button type="submit">보내기</button>
+    </form>
+  </div>
+
+  <script src="/static/js/chat.js"></script>
+</body>
+</html>

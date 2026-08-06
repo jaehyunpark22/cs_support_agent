@@ -24,6 +24,10 @@ keywords 컬럼은 "전자기기,스피커,블루투스스피커,블루투스,�
 조건에 맞는 상품이 없으면 빈 리스트를 반환한다.
 "조건에 맞는 상품이 없습니다" 같은 안내 문구를 만드는 것은
 이 파일이 아니라 상위 계층(Service)의 책임이다.
+
+id로 상품 1건을 조회하는 get_by_id는 주문 기능에서 사용한다.
+활성 여부 판단 없이 있는 그대로 반환하며, 판매 가능 여부 판단은
+상위 계층(ProductService)의 책임이다.
 """
 
 from sqlalchemy import literal
@@ -74,3 +78,7 @@ class ProductRepository:
             .order_by(Product.id)
             .all()
         )
+
+    def get_by_id(self, product_id: int) -> Product | None:
+        """id로 상품 1건을 조회한다. 활성 여부는 판단하지 않고 있는 그대로 반환한다 (활성 여부 판단은 Service의 책임)."""
+        return self.db.get(Product, product_id)

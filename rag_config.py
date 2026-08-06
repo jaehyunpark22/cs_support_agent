@@ -31,6 +31,7 @@ GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 # Gemini 모델
 EMBEDDING_MODEL = "gemini-embedding-001"
 LLM_MODEL = "gemini-2.5-flash-lite"
+# "gemini-3.1-flash-lite" "gemini-2.5-flash-lite"
 
 # 답변 생성 시 창의성 정도 (0에 가까울수록 문서 내용에 충실하게 답변)
 # RAG는 정책 문서에 있는 사실을 그대로 전달하는 게 목적이므로 낮게 설정
