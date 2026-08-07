@@ -1,15 +1,20 @@
 # CS Support Agent
 
-> LangGraph 기반 쇼핑몰 고객지원 에이전트
+> LangGraph 기반 쇼핑몰 고객지원 에이전트 입니다.
 > 고객의 자연어 요청을 분석해 적절한 Tool을 선택하고, 정책 안내부터 상품 검색·주문·환불 요청까지 처리합니다.
 
 CS Support Agent는 정책 문서에 답변하는 단순 RAG 챗봇을 넘어, 고객의 요청에 따라 **정책 검색과 실제 업무 데이터 처리까지 수행하는 쇼핑몰 고객지원 에이전트**입니다.
 
 LLM은 고객의 의도를 파악하고 필요한 Tool을 선택합니다. 상품 검색, 주문 금액 계산, 주문 생성, 환불 가능 여부 확인, DB 저장처럼 정확성이 필요한 작업은 서버의 Service와 Repository 계층에서 처리합니다.
 
-지원 범위를 벗어나거나 정책 문서에서 답을 찾지 못한 문의는 단순히 거절하고 종료하지 않고, 사람이 이후 확인할 수 있도록 문의 티켓으로 저장합니다.
+지원 범위를 벗어나거나 정책 문서에서 답을 찾지 못한 문의는 단순히 거절하고 종료하지 않고, 상담원이 이후 확인할 수 있도록 문의 내역으로 저장합니다.
 
 <!-- 대표 화면 또는 시연 GIF 추가 -->
+<img width="834" height="471" alt="image" src="https://github.com/user-attachments/assets/aec97a24-db57-4c88-9b92-3d0df765da46" />
+
+<img width="666" height="881" alt="image" src="https://github.com/user-attachments/assets/dc6da9b5-0a29-48cc-a3e6-cb08ab915674" />
+
+<img width="961" height="763" alt="image" src="https://github.com/user-attachments/assets/fb6911d2-9276-49c4-8db6-bed86424ec5b" />
 
 ---
 
@@ -19,11 +24,11 @@ LLM은 고객의 의도를 파악하고 필요한 Tool을 선택합니다. 상�
 
 * 배송·주문·환불 정책 안내
 * 고객이 원하는 상품 검색
-* 본인 주문 목록 및 상세 조회
+* 본인 주문 목록 및 상세 조회 
 * 상품 주문 및 주문 전 예상 금액 확인
 * 고객의 명확한 동의 후 주문 생성
 * 주문 상태와 중복 요청을 확인한 환불 접수
-* 자동으로 처리할 수 없는 문의 저장 후 상담원 접수
+* 자동으로 처리할 수 없는 문의 내역 저장 후 상담원 접수
 
 이 프로젝트는 LangGraph와 LangChain Tool Calling을 이용해 고객 요청에 적합한 기능을 Agent가 직접 선택하도록 구성했습니다. LLM이 모든 업무 규칙과 계산을 담당하지 않도록 역할을 분리했습니다.
 
@@ -146,10 +151,10 @@ cs_support_agent/
 │       └── admin.js                 # 관리자 탭 전환, API 호출, 문의 상태 변경
 │
 ├── data/
-│   ├── chatbot_guide.txt
-│   ├── order_policy.txt
-│   ├── refund_policy.txt
-│   └── shipping_policy.txt
+│   ├── chatbot_guide.txt            # 챗봇 가이드 문서
+│   ├── order_policy.txt             # 주문 정책 문서
+│   ├── refund_policy.txt            # 환불 정책 문서
+│   └── shipping_policy.txt          # 배송 정책 문서
 │
 ├── docs/
 │   ├── ARCHITECTURE.md              # 아키텍처, LLM 구성, 요청 처리 흐름
@@ -159,8 +164,7 @@ cs_support_agent/
 │
 ├── ingest.py                        # 정책 문서 청킹·Embedding·저장
 ├── rag_config.py                    # RAG와 Gemini 관련 환경 설정
-├── requirements.txt
-├── test_agent_service.py
+├── requirements.txt                 # 의존성 패키지
 ├── app.db                           # 업무 데이터, 자동 생성
 ├── checkpoints.db                   # 대화 상태, 자동 생성
 └── chroma_db/                       # 정책 문서 Vector DB, 자동 생성
@@ -293,7 +297,6 @@ http://localhost:8000
 * 주문 전체 환불 요청만 지원
 * 부분 환불과 환불 승인·완료 처리는 지원하지 않음
 * 관리자 페이지에서 지원 문의 상태 변경(`open`/`in_progress`/`resolved`), 전체 주문·환불 요청 조회 가능
-* 관리자의 주문·환불 조회는 읽기 전용이며, 환불 승인이나 주문 상태 변경 기능은 지원하지 않음
 * 정책 문서를 수정한 경우 ChromaDB 재인덱싱 필요
 * Agent Prompt 또는 State 구조 변경 후 기존 Checkpoint 초기화가 필요할 수 있음
 
