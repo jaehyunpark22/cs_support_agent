@@ -15,6 +15,9 @@
 ### 자연어 상품 검색
 
 <!-- 스크린샷: 자연어 상품 검색 대화 -->
+<img width="623" height="148" alt="image" src="https://github.com/user-attachments/assets/889d200f-abba-4cb7-8c4e-74264ff18463" />
+<img width="625" height="316" alt="image" src="https://github.com/user-attachments/assets/89105b4c-4b98-4a20-aba9-d9dfc8a95d46" />
+
 
 ```text
 고객
@@ -56,6 +59,8 @@ Agent Node
 ### 최저가 상품 안내
 
 <!-- 스크린샷: 최저가 상품 안내 대화 -->
+<img width="617" height="122" alt="image" src="https://github.com/user-attachments/assets/76a2deab-942d-4471-9b8f-6ddc175b1af9" />
+
 
 ```text
 고객
@@ -89,6 +94,9 @@ Agent Node
 ### 주문 조회
 
 <!-- 스크린샷: 주문 조회 대화 -->
+<img width="610" height="208" alt="image" src="https://github.com/user-attachments/assets/b9b5540a-e15f-444e-951f-6a9539ea3ef4" />
+<img width="629" height="477" alt="image" src="https://github.com/user-attachments/assets/855797d8-4045-42ed-bc3c-1c65a9c39908" />
+
 
 ```text
 고객
@@ -129,6 +137,8 @@ Agent Node
 ### 상품 주문
 
 <!-- 스크린샷: 상품 주문 대화 -->
+<img width="630" height="551" alt="image" src="https://github.com/user-attachments/assets/0ee6a04d-8a42-402c-9805-3618f646db54" />
+
 
 ```text
 고객
@@ -183,6 +193,12 @@ Agent
 ### 환불 요청
 
 <!-- 스크린샷: 환불 요청 대화 -->
+<img width="624" height="184" alt="image" src="https://github.com/user-attachments/assets/38b24b53-7cc4-40d4-ab5b-3bb9794785df" />
+
+<img width="629" height="432" alt="image" src="https://github.com/user-attachments/assets/f482427a-80c5-4a98-a357-71aabea881a0" />
+
+<img width="647" height="211" alt="image" src="https://github.com/user-attachments/assets/aa04ec83-6be5-43ec-9f16-ad728a0bf176" />
+
 
 ```text
 고객
@@ -218,9 +234,13 @@ Agent Node
 환불 요청 접수 완료 안내
 ```
 
-### 정책 문서에 답이 없는 문의
+### 정책 문의 및 정책 문서에 답이 없는 문의
 
 <!-- 스크린샷: 정책 문서에 답이 없는 문의 대화 -->
+<img width="653" height="614" alt="image" src="https://github.com/user-attachments/assets/46c7bc87-affc-4242-8746-cb1e4b7367c3" />
+
+<img width="632" height="308" alt="image" src="https://github.com/user-attachments/assets/9b73f40e-775d-4a6b-afe1-c529dc9cec69" />
+
 
 ```text
 고객 질문
