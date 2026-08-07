@@ -538,6 +538,82 @@ AgentService는 요청마다 현재 고객의 `user_id`가 클로저로 고정�
 
 ---
 
+## 데이터 모델
+
+Agent가 실제 업무를 처리하려면 실제 쇼핑몰과 동일한 수준의 데이터 구조가 먼저 필요합니다. `database/models.py`는 다음 6개 테이블을 SQLAlchemy ORM으로 정의합니다.
+
+```mermaid
+classDiagram
+    class User {
+        +int id
+        +string name
+        +string email
+        +datetime created_at
+    }
+    class Product {
+        +int id
+        +string name
+        +int price
+        +string description
+        +string keywords
+        +bool is_active
+        +datetime created_at
+    }
+    class Order {
+        +int id
+        +int user_id
+        +string order_number
+        +string status
+        +int total_amount
+        +datetime created_at
+    }
+    class OrderItem {
+        +int id
+        +int order_id
+        +int product_id
+        +int quantity
+        +int unit_price
+    }
+    class RefundRequest {
+        +int id
+        +int user_id
+        +int order_id
+        +string reason
+        +string status
+        +datetime created_at
+    }
+    class SupportTicket {
+        +int id
+        +int user_id
+        +string question
+        +string reason
+        +string status
+        +datetime created_at
+    }
+
+    User "1" --> "0..*" Order : orders
+    User "1" --> "0..*" RefundRequest : refund_requests
+    User "1" --> "0..*" SupportTicket : support_tickets
+    Product "1" --> "0..*" OrderItem : order_items
+    Order "1" --> "0..*" OrderItem : order_items
+    Order "1" --> "0..*" RefundRequest : refund_requests
+```
+
+각 테이블의 역할은 다음과 같습니다.
+
+| 테이블 | 역할 |
+| --- | --- |
+| `User` | 고객 정보 |
+| `Product` | 상품 정보. 자연어 검색을 위한 `keywords` 컬럼 포함 |
+| `Order` | 고객의 주문 정보 |
+| `OrderItem` | 주문에 포함된 상품, 수량, 주문 당시 가격 |
+| `RefundRequest` | 주문에 대한 환불 요청 |
+| `SupportTicket` | Agent가 처리하지 못해 사람의 확인이 필요한 문의 |
+
+샘플 데이터(`database/seed.py`)도 실제 업무 흐름을 테스트할 수 있도록 상품 준비 중·배송 중·배송 완료·주문 취소·환불 완료 등 서로 다른 상태의 주문을 포함해 구성했습니다. Agent가 환불 가능 여부를 판단하는 로직(`RefundNotAllowedError` 등)을 실제로 테스트하려면 이렇게 상태가 다양한 주문 데이터가 필요했기 때문입니다.
+
+---
+
 ## LLM 구성
 
 Agent와 RAG는 모두 `rag_config.py`의 동일한 `LLM_MODEL`을 사용합니다.
