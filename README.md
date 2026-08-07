@@ -63,6 +63,12 @@ DB 엔티티 (6개)
 
 테이블 간 관계와 전체 ERD는 [아키텍처 문서 - 데이터 모델](docs/ARCHITECTURE.md#데이터-모델)에서 다룹니다.
 
+추가로 README에 담지 못한 내용들을 정리한 마크다운 목록입니다
+- [아키텍처와 Agent 동작 원리](docs/ARCHITECTURE.md) — 설계 원칙, LLM 구성, Tool 구성, 전체 ERD, 요청 처리 흐름, 대화 상태 관리
+- [Service 레이어 예외 설계](docs/EXCEPTIONS.md) — 예외 클래스별 발생 위치, 처리 Tool, 안내 문구 매핑
+- [기술적 문제와 해결 과정](docs/TROUBLESHOOTING.md) — 개발 중 만난 문제 7가지와 해결 방법
+- [프로젝트 회고](docs/RETROSPECTIVE.md) — 설계하며 배운 것들
+
 ---
 
 ## 주요 기능
