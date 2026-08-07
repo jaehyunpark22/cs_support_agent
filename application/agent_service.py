@@ -143,8 +143,8 @@ def send_message(db: Session, user_id: int, message: str) -> str:
 
         result = graph.invoke({"messages": input_messages, "user_id": user_id}, config=config)
 
-        for m in result["messages"]:  # !!!!!!!!!디버깅 코드!!!!!!!!!        
-          print("[DEBUG]", type(m).__name__, getattr(m, "tool_calls", None), str(m.content)[:100])
+        # for m in result["messages"]:  # !!!!!!!!!디버깅 코드!!!!!!!!!        
+        #   print("[DEBUG]", type(m).__name__, getattr(m, "tool_calls", None), str(m.content)[:100])
 
         return result["messages"][-1].text
 
