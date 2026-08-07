@@ -65,6 +65,7 @@ DB 엔티티 (6개)
 
 
 
+
 추가로 README에 담지 못한 내용들을 정리한 마크다운 목록입니다
 - [아키텍처와 Agent 동작 원리](docs/ARCHITECTURE.md) — 설계 원칙, LLM 구성, Tool 구성, 전체 ERD, 요청 처리 흐름, 대화 상태 관리
 - [Service 레이어 예외 설계](docs/EXCEPTIONS.md) — 예외 클래스별 발생 위치, 처리 Tool, 안내 문구 매핑
